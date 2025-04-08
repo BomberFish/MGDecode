@@ -5,7 +5,7 @@ Decode CacheExtra data in MobileGestalt cache files to a readable JSON format.
 ## Usage
 
 ```
-python __main__.py <cache_file>
+python3 __main__.py <cache_file>
 ```
 
 ## Credits

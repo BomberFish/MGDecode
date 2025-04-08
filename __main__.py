@@ -40,7 +40,7 @@ import plistlib, json
 from deobfuscated import keys
 
 
-def usage(): print(BOLD + "Usage:" + END + LIGHT_BLUE + " python" + END + LIGHT_CYAN + " __main__.py" + END + LIGHT_GREEN + " <path_to_plist_file>" + END)
+def usage(): print(BOLD + "Usage: " + END + LIGHT_BLUE + "python3 " + END + LIGHT_CYAN + "__main__.py " + END + LIGHT_GREEN + "<path_to_plist_file>" + END)
 
 if len(sys.argv) != 2:
     usage()
@@ -58,8 +58,6 @@ def main():
         with open(path, 'rb') as f:
             plist = plistlib.load(f)
             deobfuscated = deobfuscate_keys(plist)
-            print(deobfuscated)
-
             new_path = os.curdir + "/results/" + ".".join(path.split("/")[-1].split(".")[:-1]) + "_deobfuscated.json"
             encoded = {k: v.decode('latin1') if isinstance(v, bytes) else v for k, v in deobfuscated["CacheExtra"].items()}
             json.dump(encoded, open(new_path, 'w'), indent=4)
